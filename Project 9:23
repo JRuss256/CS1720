@@ -1,7 +1,0 @@
-class Project {
-    public static void main(String[] args) {
-        // DND-esc choose your own adventure.
-        System.out.println("Welcome to your adventure!");
-        System.out.print("Please choose a character class (Warrior, Mage, Ranger): ");
-    }
-}
