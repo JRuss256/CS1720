@@ -1,0 +1,14 @@
+class Demo {
+    public static void main(String[] args) {
+        int a = 22;
+        int b = 10;
+        int quotient = a / b;
+        double quotient2 = (double) a / b;
+        int c = -1000000
+        int d = 1000000;
+        int multiplication = c * d;
+        System.out.println("The quotient of " + a + " and " + b + " is: " + quotient);
+        System.out.println("The quotient of " + a + " and " + b + " as a double is: " + quotient2);
+        System.out.println("The product of " + c + " and " + d + " is: " + multiplication);
+    }
+}
