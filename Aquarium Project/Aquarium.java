@@ -4,7 +4,7 @@ import edu.cymbal.graphics.PainterAPI;
 import java.awt.Color;
 
 /**
- * A colorful aquarium drawn with the class Painter library.
+ * A colorful aquarium
  * Run with painter-canvas-17.jar on the classpath.
  */
 public class Aquarium {
@@ -50,7 +50,7 @@ public class Aquarium {
         // Each fish swims back and forth, turning around when it reaches a wall.
         for (int i = 0; i < 4; i++) {
             double scale = 0.72 + i * 0.09;
-            double margin = 65 * scale; // tail length, the fish's farthest reach from center
+            double margin = 65 * scale;
             double range = WIDTH - 2 * margin;
             double travel = (frame * 2.0 + i * 175) % (2 * range);
             boolean facesRight = travel < range;
