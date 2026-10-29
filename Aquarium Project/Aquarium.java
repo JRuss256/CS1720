@@ -56,8 +56,7 @@ public class Aquarium {
             boolean facesRight = travel < range;
             double x = facesRight ? margin + travel : WIDTH - margin - (travel - range);
             double y = 150 + i * 52;
-            drawFish(p, x, y, scale,
-                    new Color(255, 170 - i * 20, 60 + i * 30), facesRight);
+            drawFish(p, x, y, scale, new Color(255, 170 - i * 20, 60 + i * 30), facesRight);
         }
 
         drawStarfish(p, 345, 475, 35, new Color(250, 205, 73));
@@ -72,23 +71,18 @@ public class Aquarium {
     }
 
     // Draws a fish with an oval body and triangular tail; x and y are its center. 
-    private static void drawFish(PainterAPI p, double x, double y, double scale,
-                                 Color color, boolean facesRight) {
+    private static void drawFish(PainterAPI p, double x, double y, double scale, Color color, boolean facesRight) {
         double direction = facesRight ? 1 : -1;
         drawEllipse(p, x, y, 43 * scale, 25 * scale, color, new Color(30, 35, 47));
-        drawPolygon(p, new double[]{x - direction * 35 * scale, x - direction * 65 * scale,
-                        x - direction * 35 * scale},
-                new double[]{y, y - 22 * scale, y + 22 * scale},
-                new Color(235, 110, 65), new Color(30, 35, 47));
-        drawEllipse(p, x + direction * 20 * scale, y - 4 * scale,
-                3.5 * scale, 3.5 * scale, WHITE, WHITE);
-        drawEllipse(p, x + direction * 21 * scale, y - 4 * scale,
-                1.3 * scale, 1.3 * scale, Color.BLACK, Color.BLACK);
+        drawPolygon(p, new double[]{x - direction * 35 * scale, x - direction * 65 * scale, x - direction * 35 * scale},
+                new double[]{y, y - 22 * scale, y + 22 * scale}, new Color(235, 110, 65), new Color(30, 35, 47));
+        // The line above continues the drawPolygon line, its just messy and annoying to read otherwise
+        drawEllipse(p, x + direction * 20 * scale, y - 4 * scale, 3.5 * scale, 3.5 * scale, WHITE, WHITE);
+        drawEllipse(p, x + direction * 21 * scale, y - 4 * scale, 1.3 * scale, 1.3 * scale, Color.BLACK, Color.BLACK);
     }
 
     // Draws a five-armed starfish as a filled polygon.
-    private static void drawStarfish(PainterAPI p, double x, double y,
-                                     double radius, Color color) {
+    private static void drawStarfish(PainterAPI p, double x, double y, double radius, Color color) {
         double[] xs = new double[10];
         double[] ys = new double[10];
         for (int i = 0; i < 10; i++) {
@@ -103,8 +97,7 @@ public class Aquarium {
     }
 
     // Draws a seaweed stalk made of curved-looking connected segments.
-    private static void drawSeaweed(PainterAPI p, double x, double bottom,
-                                   double scale, Color color) {
+    private static void drawSeaweed(PainterAPI p, double x, double bottom, double scale, Color color) {
         p.setPenColor(color);
         p.setPenWidth((float) (5 * scale));
         p.liftPen();
@@ -119,44 +112,34 @@ public class Aquarium {
     }
 
     // Draws branched coral using reusable line segments.
-    private static void drawCoral(PainterAPI p, double x, double bottom,
-                                  double scale, Color color) {
+    private static void drawCoral(PainterAPI p, double x, double bottom, double scale, Color color) {
         p.setPenColor(color);
         p.setPenWidth((float) (7 * scale));
         drawLine(p, x, bottom, x - 10 * scale, bottom - 45 * scale, color, 7 * scale);
-        drawLine(p, x - 10 * scale, bottom - 45 * scale,
-                x - 30 * scale, bottom - 68 * scale, color, 6 * scale);
-        drawLine(p, x - 10 * scale, bottom - 45 * scale,
-                x + 12 * scale, bottom - 78 * scale, color, 6 * scale);
-        drawLine(p, x - 30 * scale, bottom - 68 * scale,
-                x - 34 * scale, bottom - 91 * scale, color, 5 * scale);
-        drawLine(p, x + 12 * scale, bottom - 78 * scale,
-                x + 29 * scale, bottom - 99 * scale, color, 5 * scale);
+        drawLine(p, x - 10 * scale, bottom - 45 * scale, x - 30 * scale, bottom - 68 * scale, color, 6 * scale);
+        drawLine(p, x - 10 * scale, bottom - 45 * scale, x + 12 * scale, bottom - 78 * scale, color, 6 * scale);
+        drawLine(p, x - 30 * scale, bottom - 68 * scale, x - 34 * scale, bottom - 91 * scale, color, 5 * scale);
+        drawLine(p, x + 12 * scale, bottom - 78 * scale, x + 29 * scale, bottom - 99 * scale, color, 5 * scale);
     }
 
     private static void drawSand(PainterAPI p) {
         drawPolygon(p, new double[]{0, WIDTH, WIDTH, 0},
                 new double[]{500, 500, HEIGHT, HEIGHT}, SAND, SAND);
         for (int i = 0; i < 16; i++) {
-            drawEllipse(p, 24 + i * 51, 555 + (i % 2) * 17, 3, 2,
-                    new Color(178, 143, 83), new Color(178, 143, 83));
+            drawEllipse(p, 24 + i * 51, 555 + (i % 2) * 17, 3, 2, new Color(178, 143, 83), new Color(178, 143, 83));
         }
     }
 
     private static void drawRock(PainterAPI p, double x, double y, double scale) {
-        drawEllipse(p, x, y, 48 * scale, 27 * scale,
-                new Color(105, 111, 115), new Color(55, 67, 75));
+        drawEllipse(p, x, y, 48 * scale, 27 * scale, new Color(105, 111, 115), new Color(55, 67, 75));
     }
 
     private static void drawBubble(PainterAPI p, double x, double y, double radius) {
-        drawEllipse(p, x, y, radius, radius,
-                new Color(90, 185, 220, 100), new Color(180, 225, 240));
+        drawEllipse(p, x, y, radius, radius, new Color(90, 185, 220, 100), new Color(180, 225, 240));
     }
 
     // Draws an oval by joining points around an ellipse. 
-    private static void drawEllipse(PainterAPI p, double centerX, double centerY,
-                                    double radiusX, double radiusY,
-                                    Color fill, Color outline) {
+    private static void drawEllipse(PainterAPI p, double centerX, double centerY, double radiusX, double radiusY, Color fill, Color outline) {
         int points = 32;
         double[] xs = new double[points];
         double[] ys = new double[points];
@@ -169,8 +152,7 @@ public class Aquarium {
     }
 
     // Draws and fills a closed shape from matching x and y coordinate arrays.
-    private static void drawPolygon(PainterAPI p, double[] xs, double[] ys,
-                                    Color fill, Color outline) {
+    private static void drawPolygon(PainterAPI p, double[] xs, double[] ys, Color fill, Color outline) {
         p.liftPen();
         p.setPenColor(outline);
         p.setPenWidth(1.5f);
@@ -190,8 +172,7 @@ public class Aquarium {
         p.moveTo(x - WIDTH / 2.0, HEIGHT / 2.0 - y);
     }
 
-    private static void drawLine(PainterAPI p, double x1, double y1,
-                                 double x2, double y2, Color color, double width) {
+    private static void drawLine(PainterAPI p, double x1, double y1, double x2, double y2, Color color, double width) {
         p.liftPen();
         p.setPenColor(color);
         p.setPenWidth((float) width);
