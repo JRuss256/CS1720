@@ -38,7 +38,7 @@ public class Aquarium {
         animation.interrupt();
     }
 
-    /** Draws the complete scene for one animation frame. */
+    // Draws the complete scene for one animation frame.
     private static void drawAquarium(PainterAPI p, int frame) {
         drawSand(p);
         drawRock(p, 93, 465, 1.0);
@@ -71,7 +71,7 @@ public class Aquarium {
         }
     }
 
-    /** Draws a fish with an oval body and triangular tail; x and y are its center. */
+    // Draws a fish with an oval body and triangular tail; x and y are its center. 
     private static void drawFish(PainterAPI p, double x, double y, double scale,
                                  Color color, boolean facesRight) {
         double direction = facesRight ? 1 : -1;
@@ -86,7 +86,7 @@ public class Aquarium {
                 1.3 * scale, 1.3 * scale, Color.BLACK, Color.BLACK);
     }
 
-    /** Draws a five-armed starfish as a filled polygon. */
+    // Draws a five-armed starfish as a filled polygon.
     private static void drawStarfish(PainterAPI p, double x, double y,
                                      double radius, Color color) {
         double[] xs = new double[10];
@@ -102,7 +102,7 @@ public class Aquarium {
                 new Color(255, 227, 164), new Color(255, 227, 164));
     }
 
-    /** Draws a seaweed stalk made of curved-looking connected segments. */
+    // Draws a seaweed stalk made of curved-looking connected segments.
     private static void drawSeaweed(PainterAPI p, double x, double bottom,
                                    double scale, Color color) {
         p.setPenColor(color);
@@ -118,7 +118,7 @@ public class Aquarium {
         p.liftPen();
     }
 
-    /** Draws branched coral using reusable line segments. */
+    // Draws branched coral using reusable line segments.
     private static void drawCoral(PainterAPI p, double x, double bottom,
                                   double scale, Color color) {
         p.setPenColor(color);
@@ -153,7 +153,7 @@ public class Aquarium {
                 new Color(90, 185, 220, 100), new Color(180, 225, 240));
     }
 
-    /** Draws an oval by joining points around an ellipse. */
+    // Draws an oval by joining points around an ellipse. 
     private static void drawEllipse(PainterAPI p, double centerX, double centerY,
                                     double radiusX, double radiusY,
                                     Color fill, Color outline) {
@@ -168,7 +168,7 @@ public class Aquarium {
         drawPolygon(p, xs, ys, fill, outline);
     }
 
-    /** Draws and fills a closed shape from matching x and y coordinate arrays. */
+    // Draws and fills a closed shape from matching x and y coordinate arrays.
     private static void drawPolygon(PainterAPI p, double[] xs, double[] ys,
                                     Color fill, Color outline) {
         p.liftPen();
@@ -185,7 +185,7 @@ public class Aquarium {
         p.liftPen();
     }
 
-    /** Converts drawing coordinates (top-left origin) to Painter's centered coordinates. */
+    // Converts drawing coordinates (top-left origin) to Painter's centered coordinates.
     private static void moveTo(PainterAPI p, double x, double y) {
         p.moveTo(x - WIDTH / 2.0, HEIGHT / 2.0 - y);
     }
