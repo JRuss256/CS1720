@@ -50,3 +50,8 @@ jobs:
           grep -F 'Your Pokemon selected' random.txt
           grep -F 'Opponent Pokemon selected' random.txt
           grep -E 'You (win|lose)!' random.txt
+      - name: Verify the standalone checkpoint
+        shell: bash
+        run: |
+          java checkpoint/PokemonBattleCheckpoint.java > checkpoint.json
+          python3 -c 'import json; assert json.load(open("checkpoint.json"))["name"] == "pikachu"'
