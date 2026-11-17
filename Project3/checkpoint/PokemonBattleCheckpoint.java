@@ -29,9 +29,9 @@ public class PokemonBattleCheckpoint {
     }
 
     /**
-     * Sends a GET request to PokéAPI and reads its response body.
+     * Sends a GET request to PokéAPI and reads it.
      * @param pokemonName the lowercase PokéAPI name to look up
-     * @return the raw JSON text returned by PokéAPI
+     * @return JSON text returned by the API
      * @throws IOException if the request fails or the status is something other than 200
      * @throws InterruptedException if the request is interrupted
      */
@@ -66,7 +66,7 @@ public class PokemonBattleCheckpoint {
     }
 
     /**
-     * Plans the conversion from PokéAPI JSON into a Java Pokemon object.
+     * Conversion from PokéAPI JSON into a Java Pokemon object.
      * @param name the Pokemon name or ID to look up
      * @return a Pokemon with its types and base stats
      */
@@ -76,8 +76,8 @@ public class PokemonBattleCheckpoint {
     }
 
     /**
-     * Plans the lookup of damage relationships for a Pokemon's attack types.
-     * @param pokemon the Pokemon whose types need to be looked up
+     * Look up the damage relationships for a Pokemon's attack types.
+     * @param the Pokemon whose types need to be looked up
      * @param typeChart the map of attack types to their damage multipliers
      */
     private static void loadTypes(Pokemon pokemon, Map<String, Map<String, Double>> typeChart) {
@@ -85,11 +85,11 @@ public class PokemonBattleCheckpoint {
     }
 
     /**
-     * Plans the rounds of the battle until one Pokemon runs out of HP.
+     * The rounds of the battle until one Pokemon runs out of HP.
      * @param input the Scanner used to read battle actions
-     * @param player the Pokemon the player controls
-     * @param opponent the Pokemon the computer controls
-     * @param typeChart the map used to look up type effectiveness
+     * @param player = the Pokemon the player controls
+     * @param opponent = the Pokemon the computer controls
+     * @param typeChart = the map used to look up type effectiveness
      */
     private static void playBattle(Scanner input, Pokemon player, Pokemon opponent,
                                    Map<String, Map<String, Double>> typeChart) {
@@ -99,9 +99,9 @@ public class PokemonBattleCheckpoint {
     /**
      * Plans a turn in which the player picks an attack or uses a potion.
      * @param input the Scanner used to read the player's action
-     * @param player the Pokemon taking this turn
-     * @param opponent the target of a player attack
-     * @param typeChart the map used to look up type effectiveness
+     * @param player = the Pokemon taking this turn
+     * @param opponent = the target of a player attack
+     * @param typeChart = the map used to look up type effectiveness
      */
     private static void playerTurn(Scanner input, Pokemon player, Pokemon opponent,
                                    Map<String, Map<String, Double>> typeChart) {
@@ -109,10 +109,10 @@ public class PokemonBattleCheckpoint {
     }
 
     /**
-     * Plans a turn in which the computer picks its strongest attack.
-     * @param opponent the Pokemon taking this turn
-     * @param player the target of the opponent's attack
-     * @param typeChart the map used to look up type effectiveness
+     * The computer picks its strongest attack.
+     * @param opponent = the Pokemon taking this turn
+     * @param player = the target of the opponent's attack
+     * @param typeChart = the map used to look up type effectiveness
      */
     private static void opponentTurn(Pokemon opponent, Pokemon player,
                                      Map<String, Map<String, Double>> typeChart) {
@@ -120,11 +120,11 @@ public class PokemonBattleCheckpoint {
     }
 
     /**
-     * Plans the damage calculation for a single attack.
-     * @param attacker the Pokemon using the move
-     * @param defender the target of the move
-     * @param attack the selected strike
-     * @param typeChart the map used to look up type effectiveness
+     * Damage calculation for a single attack.
+     * @param attacker = the Pokemon using the move
+     * @param defender = the target of the move
+     * @param attack = the selected strike
+     * @param typeChart = the map used to look up type effectiveness
      * @return the amount of HP to subtract from the defender
      */
     private static int calculateDamage(Pokemon attacker, Pokemon defender, String attack,
@@ -133,7 +133,7 @@ public class PokemonBattleCheckpoint {
         throw new UnsupportedOperationException("Planned for the final project.");
     }
 
-    /** Plans the Java object that holds one Pokemon's data and battle state. */
+    // Plans the Java object that holds one Pokemon's data and battle state.
     private static class Pokemon {
         // Store the name, types, current and maximum HP, Attack, Defense, and Speed.
     }
