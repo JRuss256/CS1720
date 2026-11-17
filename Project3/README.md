@@ -16,9 +16,3 @@ Gyarados is Water/Flying. Since both types are weak to Electric, a Pikachu Elect
 ## Run the checkpoint
 
 The checkpoint uses a hard-coded name, `pikachu`. The `fetchPokemonJson` method sends the request, checks the HTTP status, and returns the response body when the status is 200. Then `main` prints that raw JSON.
-
-With Java 11 or newer, run this command from the project directory.
-
-```sh
-java Main.java
-```
