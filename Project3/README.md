@@ -1,18 +1,27 @@
-# Pokémon Type Matchup Calculator
+# Pokémon Battle
 
-## Project 3A description
+A Java terminal game for CS1720 Project 3. Choose a Pokémon and an opponent, then battle until one runs out of HP. PokéAPI supplies both Pokémon's types, base stats, and type matchups.
 
-My Java program will ask the user to enter two Pokémon names. It will use PokéAPI to look up each Pokémon's types and the damage relationships for those types. For each Pokémon, the program will calculate how effective an attack of each of its own types would be against the other Pokémon. If the defender has two types, the program will multiply the two effectiveness values. It will show the strongest attack type for each side and compare their multipliers. If the highest multipliers are equal, it will call the matchup a tie.
+## Run the game
+
+Use JDK 17, Maven, and an internet connection. From this folder, run:
+
+```sh
+mvn -q compile exec:java
+```
+
+If your class environment already provides `org.json`, use its configured classpath to run `Main.java`.
+
+For a first battle, enter `pikachu` and `gyarados`, then select **Electric strike**. Either selection also accepts `random` or an empty line. Each random choice picks one of the 151 original Pokémon.
+
+## Battle rules
+
+- The Pokémon with higher Speed goes first each round. The player goes first on a tie.
+- Each Pokémon has a strike for each of its types and a weaker, always-neutral Quick strike. Quick strike uses the same turn order as the other attacks.
+- A typed strike multiplies the effectiveness against each of the defender's types. An immune matchup deals zero damage.
+- Starting HP is the PokéAPI base HP plus 30. Damage uses the attack's power, the attacker’s Attack, the defender’s Defense, and type effectiveness.
+- The player gets one potion that can restore up to one quarter of their maximum HP. Using it takes a turn. The computer picks its highest-damage attack.
 
 ## Example API requests
 
-If the user enters **Pikachu** and **Gyarados**, the final program will start with these requests:
-
-- [Pikachu](https://pokeapi.co/api/v2/pokemon/pikachu)
-- [Gyarados](https://pokeapi.co/api/v2/pokemon/gyarados)
-
-Gyarados is Water/Flying. Since both types are weak to Electric, a Pikachu Electric-type attack gets a `2 × 2 = 4×` multiplier.
-
-## Run the checkpoint
-
-The checkpoint uses a hard-coded name, `pikachu`. The `fetchPokemonJson` method sends the request, checks the HTTP status, and returns the response body when the status is 200. Then `main` prints that raw JSON.
+For Pikachu versus Gyarados, the game asks for [Pikachu's stats and types](https://pokeapi.co/api/v2/pokemon/pikachu) and [Gyarados's stats and types](https://pokeapi.co/api/v2/pokemon/gyarados). Then it fetches the damage relations for [Electric](https://pokeapi.co/api/v2/type/electric), Water, and Flying. Entering a different name changes which Pokémon the program downloads.

@@ -1,0 +1,52 @@
+name: Project 3 battle checks
+
+on:
+  push:
+    paths:
+      - 'Project3/**'
+      - '.github/workflows/project3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  battle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: Project3
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Compile the game
+        run: mvn -B -q compile
+      - name: Verify battles with live PokéAPI data
+        shell: bash
+        run: |
+          printf '%s\n' definitely-not-a-pokemon-999 pikachu gyarados wrong 1 1 1 \
+            | mvn -B -q exec:java | tee pikachu.txt
+          grep -F 'Pokemon not found' pikachu.txt
+          grep -F 'Enter one of the listed numbers' pikachu.txt
+          grep -F '(4.00x type)' pikachu.txt
+          grep -F 'You win!' pikachu.txt
+
+          printf '%s\n' pikachu geodude 1 2 \
+            | mvn -B -q exec:java | tee immunity.txt
+          grep -F '0 damage (0.00x type)' immunity.txt
+          grep -F 'You lose!' immunity.txt
+
+          printf '%s\n' squirtle charmander 3 1 1 1 1 1 \
+            | mvn -B -q exec:java | tee potion.txt
+          grep -F 'restored' potion.txt
+          grep -F 'You win!' potion.txt
+
+          { printf 'random\n\n'; printf '1\n%.0s' {1..300}; } \
+            | mvn -B -q exec:java | tee random.txt
+          grep -F 'Your Pokemon selected' random.txt
+          grep -F 'Opponent Pokemon selected' random.txt
+          grep -E 'You (win|lose)!' random.txt
