@@ -1,6 +1,6 @@
 # Pokémon Battle
 
-A Java terminal game for CS1720 Project 3. Choose a Pokémon and an opponent, then battle until one runs out of HP. PokéAPI supplies both Pokémon's types, base stats, and type matchups.
+Choose a Pokémon and an opponent, then battle until one runs out of HP. PokéAPI supplies both Pokémon's types, base stats, and type matchups.
 
 ## Run the game
 
